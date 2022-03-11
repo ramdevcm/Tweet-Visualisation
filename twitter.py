@@ -1,16 +1,18 @@
+
 from tweepy.streaming import Stream
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy import API
+import tweepy
 import credentials
 from pykafka import KafkaClient
-import json
+
 
 def invokeKafkaClient():
     return KafkaClient(hosts='127.0.0.1:9092')
 
 
-class StdOutListener(Stream):
+class StdOutListener(tweepy.StreamingClient):
     def on_data(self, data):
         print(data)
        
@@ -28,7 +30,7 @@ if __name__ == "__main__":
     print(api.verify_credentials().screen_name)
 
 
-    listener = StdOutListener(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
+    listener = StdOutListener(auth)
     stream = Stream(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
-
+    stream.filter(track=["test"])
     
