@@ -1,9 +1,9 @@
+import tweepy
+import credentials
 from tweepy import Stream
 from tweepy import OAuthHandler
 from tweepy import Stream
 from tweepy import API
-import tweepy
-import credentials
 from pykafka import KafkaClient
 import json
 
@@ -17,24 +17,30 @@ class StdOutListener(tweepy.Stream):
         return True
 
     def on_status(self, status):
-        print(status)
+        print("\n\n\n\n",status)
         return True
 
     def on_error(self, status):
         print(status.id)
 
-if __name__ == "__main__":
+
+def main():
     auth = OAuthHandler(credentials.API_KEY, credentials.API_SECRET_KEY)
     auth.set_access_token(credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
 
     # Authentication validator (prints the user name, if logged in and credentials are right)
     api = API(auth)
-    print(api.verify_credentials().screen_name)
+    print("{} is logged in right now!!".format(api.verify_credentials().screen_name))
 
 
     listener = StdOutListener(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
     stream = Stream(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
     
     #filters the tweet that contains  strings defined within track
-    listener.filter(track=["ramu1010"])
+    listener.filter(track=["Twitscape"])
     listener.sample()
+
+
+if __name__ == "__main__":
+    main()
+
