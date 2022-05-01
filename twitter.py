@@ -8,6 +8,7 @@ from pykafka import KafkaClient
 import json
 
 def invokeKafkaClient():
+
     return KafkaClient(hosts='127.0.0.1:9092')
 
 
