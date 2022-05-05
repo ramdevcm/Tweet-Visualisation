@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+}
+
+.map {
+    flex-direction: left;
+}
+.right-top {
+    flex-direction: right;
+    flex: 1;
+
+}
