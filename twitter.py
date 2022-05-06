@@ -1,3 +1,4 @@
+from operator import inv
 import tweepy
 import credentials
 from tweepy import Stream
@@ -15,6 +16,12 @@ def invokeKafkaClient():
 class StdOutListener(tweepy.Stream):
     def on_data(self, data):
         print(data)
+        message = json.loads(data)
+        if message['place'] is not None:
+            client = invokeKafkaClient()
+            topic = client.topics['twitterdata1']
+            producer = topic.get_sync_producer()
+            producer.produce(data.encode('ascii'))
         return True
 
     def on_status(self, status):
