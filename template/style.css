@@ -12,13 +12,21 @@
     height: 580px;
 }
 
+.right {
+    display: flex;
+    flex-direction: column;
+}
 .right-top {
     float: right;
-    width: 20%;
+    max-height: 40%;
     padding-left: 10px;
 
 }
+.right-bottom {
 
+    padding-left: 10px;
+
+}
 
 .cards-top {
     max-width: 1200px;

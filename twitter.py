@@ -10,7 +10,7 @@ import json
 
 def invokeKafkaClient():
 
-    return KafkaClient(hosts='127.0.0.1:9092')
+    return KafkaClient(hosts='ec2-3-110-158-36.ap-south-1.compute.amazonaws.com:9092')
 
 
 class StdOutListener(tweepy.Stream):
