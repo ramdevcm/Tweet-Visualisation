@@ -1,5 +1,9 @@
 .search {}
 
+h1 {
+    text-indent: 350px;
+  }
+
 
 .container {
     display: flex;
