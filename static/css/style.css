@@ -1,5 +1,6 @@
-.search {}
-
+::-webkit-scrollbar { padding: 10px; width: 6px; height: 4px; background: #e6e4e4; }
+::-webkit-scrollbar-thumb { background-color: #000000a9; -webkit-border-radius: 1ex; }
+  
 
 .container {
     display: flex;
@@ -16,26 +17,28 @@
     display: flex;
     flex-direction: column;
 }
+
 .right-top {
     float: right;
-    max-height: 40%;
+    max-height: 50%;
     padding-left: 10px;
 
 }
 .right-bottom {
-
+    max-height: 50%;
     padding-left: 10px;
 
 }
 
 .cards-top {
     max-width: 1200px;
-    max-height: 40%;
+    max-height: 60%;
     margin: 0 auto;
     display: grid;
     grid-gap: 1rem;
     margin-bottom: 10px;
     overflow-y:scroll;
+    padding-right: 5px;
 }
 
 .card-top {
@@ -48,11 +51,12 @@
 
 .cards-bottom {
     max-width: 1200px;
-    max-height: 40%;
+    max-height: 60%;
     margin: 0 auto;
     display: grid;
     grid-gap: 1rem;
     overflow-y:scroll;
+    padding-right: 5px;
     
 }
 
