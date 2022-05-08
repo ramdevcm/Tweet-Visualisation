@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([51.512, -0.104], 1);
+var mymap = L.map('mapid').setView([25.512, 20.104], 2);
 
 L.tileLayer('   https://api.maptiler.com/maps/hybrid/256/{z}/{x}/{y}.jpg?key=bvyvAPyZ7H2S6PR2Tq2h', {
 	maxZoom: 18,
@@ -21,7 +21,14 @@ source.addEventListener('message', function(e){
 }, false);
 
 
+L.control.scale().addTo(mymap);
 
+setInterval(function(){
+    map.setView([0, 0]);
+    setTimeout(function(){
+        map.setView([60, 0]);
+    }, 2000);
+}, 4000);
 
 var searchControl = L.esri.Geocoding.geosearch({
   position: 'topright',
