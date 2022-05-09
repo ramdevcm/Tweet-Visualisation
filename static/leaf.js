@@ -18,9 +18,17 @@ source.addEventListener('message', function(e){
 
     marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>');
 
+    appendData(obj);
+ 
 }, false);
 
-
+function appendData(data) {
+  var mainContainer = document.getElementById("PQ1");
+  
+    var div = document.createElement("div");
+    div.innerHTML = 'Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
+    mainContainer.appendChild(div);
+}
 L.control.scale().addTo(mymap);
 
 setInterval(function(){
