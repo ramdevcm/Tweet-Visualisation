@@ -15,40 +15,24 @@ source.addEventListener('message', function(e){
     long = obj.place.bounding_box.coordinates[0][0][0];
     username = obj.user.name;
     tweet = obj.text;
-
+    profileimg=obj.profile_image_url;
     marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>');
 
-    appendData(obj);
+    appendData(username,tweet,profileimg);
  
 }, false);
 
-/*function appendData(data) {
-  var mainContainer = document.getElementById("PQ1");
-  var div = document.createElement("div");
-  div.innerHTML = 'Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
-  mainContainer.appendChild(div);
-}*/
 
-function appendData(data) {
+function appendData(username,tweet,profileimg) 
+{
   var mainContainer = document.getElementById("PQ");
-
-  data.forEach((result) => 
-  {
-    // Create card element
-    const div = document.createElement('div');
+  var div = document.createElement("div");
+  div.classList='card-top';
+  div.innerHTML = '<img src="'+profileimg+'"/> Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
+  mainContainer.appendChild(div);
   
-    // Construct card content
-    const content = `
-    var div = document.createElement("div");
-    div.innerHTML = 'Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
-    mainContainer.appendChild(div);
-    `;
-  
-    // Append newyly created card element to the container
-    mainContainer.innerHTML += content;
-  })
-
 }
+
 
 L.control.scale().addTo(mymap);
 setInterval(function(){
