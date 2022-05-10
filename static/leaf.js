@@ -10,12 +10,12 @@ var source = new EventSource('/topic/twitterdata1');
 
 source.addEventListener('message', function(e){
     obj = JSON.parse(e.data);
-    console.log(obj);
     lat = obj.place.bounding_box.coordinates[0][0][1];
     long = obj.place.bounding_box.coordinates[0][0][0];
     username = obj.user.name;
     tweet = obj.text;
-    profileimg=obj.profile_image_url;
+    profileimg=obj.user.profile_image_url;
+    hashtag = obj.entities.hashtags[0];
     marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>');
 
     appendData(username,tweet,profileimg);
@@ -25,10 +25,15 @@ source.addEventListener('message', function(e){
 
 function appendData(username,tweet,profileimg) 
 {
+  
   var mainContainer = document.getElementById("PQ");
   var div = document.createElement("div");
+  var img = document.createElement("div");
+  // img.classList='profile-img';
   div.classList='card-top';
-  div.innerHTML = '<img src="'+profileimg+'"/> Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
+  // img.innerHTML ='<img src="'+profileimg+'" />';
+  div.innerHTML = '<img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius:50px;" /> <strong>' + username + '</strong><br>' + tweet;
+  // div.appendChild(img);
   mainContainer.appendChild(div);
   
 }
