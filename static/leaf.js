@@ -22,15 +22,35 @@ source.addEventListener('message', function(e){
  
 }, false);
 
-function appendData(data) {
+/*function appendData(data) {
   var mainContainer = document.getElementById("PQ1");
+  var div = document.createElement("div");
+  div.innerHTML = 'Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
+  mainContainer.appendChild(div);
+}*/
+
+function appendData(data) {
+  var mainContainer = document.getElementById("PQ");
+
+  data.forEach((result) => 
+  {
+    // Create card element
+    const div = document.createElement('div');
   
+    // Construct card content
+    const content = `
     var div = document.createElement("div");
     div.innerHTML = 'Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>';
     mainContainer.appendChild(div);
-}
-L.control.scale().addTo(mymap);
+    `;
+  
+    // Append newyly created card element to the container
+    mainContainer.innerHTML += content;
+  })
 
+}
+
+L.control.scale().addTo(mymap);
 setInterval(function(){
     map.setView([0, 0]);
     setTimeout(function(){
