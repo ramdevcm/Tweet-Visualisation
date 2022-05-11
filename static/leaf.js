@@ -14,26 +14,45 @@ source.addEventListener('message', function(e){
     long = obj.place.bounding_box.coordinates[0][0][0];
     username = obj.user.name;
     tweet = obj.text;
-    profileimg=obj.user.profile_image_url;
-    hashtag = obj.entities.hashtags[0];
+    profileimg=obj.user.profile_image_url_https;
+    hashtag = obj.entities.hashtags;
     marker = L.marker([lat,long],).addTo(mymap).bindPopup('Username: <strong>' + username + '</strong><br>Tweet: <strong>' + tweet + '</strong>');
-
+      
     appendData(username,tweet,profileimg);
+
+    const priority_tags=["DANGER","ACCIDENT","ALERT","SAFE"];
+    hashtag.every(element => {
+      tag=(element.text).toUpperCase();
+      if(priority_tags.includes(tag))
+        {
+          var tag_index="tag"+priority_tags.indexOf(tag);
+          priorityData(username,tweet,profileimg,tag,tag_index);
+          return false;
+        }
  
+    });
+
 }, false);
 
+
+function priorityData(username,tweet,profileimg,tag,tag_index) 
+{
+  var mainContainer = document.getElementById("PQ");
+  var div = document.createElement("div");
+  div.classList="card-top";
+  div.innerHTML = '<div class="'+tag_index+'">' + tag + '</div> <img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius:50px;" /> <div class="username"> <strong>' + username + '</strong></div><br>' + '<div class="tweet">' + tweet + '</div>';
+  mainContainer.appendChild(div);
+  
+}
 
 function appendData(username,tweet,profileimg) 
 {
   
-  var mainContainer = document.getElementById("PQ");
+  var mainContainer = document.getElementById("recents");
   var div = document.createElement("div");
   var img = document.createElement("div");
-  // img.classList='profile-img';
-  div.classList='card-top';
-  // img.innerHTML ='<img src="'+profileimg+'" />';
-  div.innerHTML = '<img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius:50px;" /> <strong>' + username + '</strong><br>' + tweet;
-  // div.appendChild(img);
+  div.classList='card-bottom';
+  div.innerHTML = '<img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius: 50px;" /> <div class="username"> <strong>' + username + '</strong></div><br>' + '<div class="tweet">' + tweet + '</div>';
   mainContainer.appendChild(div);
   
 }

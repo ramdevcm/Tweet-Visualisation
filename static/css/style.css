@@ -8,9 +8,56 @@ body {
     background-size: cover;
   }
 
-h1{
-    text-indent: 350px;
-}
+h1 { 
+    font-size:40px; 
+    text-transform:uppercase; 
+    text-indent: 200px;
+    color:#222; 
+    letter-spacing:1px;
+    font-family:"Playfair Display", serif; 
+    font-weight:400;
+  }
+
+  h1 span {
+    margin-top: 5px;
+    font-size:15px; 
+    color:#444; 
+    word-spacing:1px;  
+    letter-spacing:2px;
+    text-transform: uppercase; 
+    font-family:"Raleway", sans-serif; 
+    font-weight:500;
+    justify-items: center;
+    display: grid;
+    grid-template-columns: 16% max-content 30%; 
+    /*grid-template-rows: 27px 0;*/
+    grid-gap: 0px;
+    align-items: center;
+    
+  }
+
+    h1 span:before {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    width:content;
+    background-color:#f8f8f8;
+  }
+
+  h1 span:after {
+    content: " ";
+    display: block;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
+    height: 5px;
+    width: content;
+    background-color:#f8f8f8;
+  }
+
+
+
 .container {
     display: flex;
 }
@@ -30,12 +77,10 @@ h1{
 .right-top {
     float: right;
     max-height: 50%;
-    padding-left: 10px;
 
 }
 .right-bottom {
     max-height: 50%;
-    padding-left: 10px;
 
 }
 
@@ -53,7 +98,7 @@ h1{
 
 .card-top {
     transition: 0.3s;
-    background-color: dodgerblue;
+    background-color:#1d5c96;
     color: white;
     padding: 10px;
     height:fit-content;
@@ -61,8 +106,79 @@ h1{
 
 }
 
+
 .profile-img{
     float: left;
+}
+
+.username{
+    font-family:'Garamond', serif;
+}
+
+.tweet{
+    font-family: 'Monaco', monospace;
+    font-size: small;
+    text-align: end;
+}
+
+.tag0
+{
+    background-color: red;
+    color:white;
+    padding: 10px;
+    padding: 2%;
+    float: right;
+    height:0.5em;
+    width:5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size:x-small;  
+    font-weight: bold;
+    text-align: center;
+}
+
+.tag1
+{
+    background-color: #eed202;
+    color:black;
+    padding: 10px;
+    padding: 2%;
+    float: right;
+    height:0.5em;
+    width:5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size:x-small;  
+    font-weight: bold;
+    text-align: center;
+}
+
+.tag2
+{
+    background-color: yellowgreen;
+    color:black;
+    padding: 10px;
+    padding: 2%;
+    float: right;
+    height:0.5em;
+    width:5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size:x-small;  
+    font-weight: bold;
+    text-align: center;
+}
+
+.tag2
+{
+    background-color: green;
+    color:black;
+    padding: 10px;
+    padding: 2%;
+    float: right;
+    height:0.5em;
+    width:5em;
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size:x-small;  
+    font-weight: bold;
+    text-align: center;
 }
 
 
@@ -85,10 +201,10 @@ h1{
 
 .card-bottom {
     transition: 0.3s;
-    background-color: rgb(255, 30, 206);
-    color: white;
+    background-color:#f6b60d;
+    color: #372800;
     padding: 10px;
-    height: 2rem;
+    height: fit-content;
     border-radius: 10px;
 
 }
