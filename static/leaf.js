@@ -56,13 +56,12 @@ source.addEventListener('message', function(e){
       shadowSize: [41, 41]
     });
 
-        
+      
     appendData(username,tweet,profileimg);
 
     const priority_tags=["DANGER","ACCIDENT","ALERT","SAFE"];
     hashtag.every(element => {
-
-        
+    
       tag=(element.text).toUpperCase();
       if(priority_tags.includes(tag))
         {
