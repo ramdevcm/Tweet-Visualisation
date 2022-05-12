@@ -45,7 +45,6 @@ def main():
     listener = StdOutListener(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
     stream = Stream(credentials.API_KEY, credentials.API_SECRET_KEY,credentials.ACCESS_TOKEN, credentials.ACCESS_TOKEN_SECRET)
     
-    #filters the tweet that contains  strings defined within track
     listener.filter(track=["Twitscape"])
     listener.sample()
 

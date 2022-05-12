@@ -57,16 +57,16 @@ source.addEventListener('message', function(e){
     });
 
       
-    appendData(username,tweet,profileimg);
+    appendData(username,tweet,profileimg,lat,long);
 
     const priority_tags=["DANGER","ACCIDENT","ALERT","SAFE"];
     hashtag.every(element => {
-    
+    found=0;
       tag=(element.text).toUpperCase();
-      if(priority_tags.includes(tag))
+      if((found==0) && priority_tags.includes(tag))
         {
+          found=1;
           var tag_index="tag"+priority_tags.indexOf(tag);
-          console.log(tag);
           if(tag == "DANGER")
           {
             iconColor = redIcon;
@@ -83,7 +83,7 @@ source.addEventListener('message', function(e){
           {
             iconColor = yellowIcon;
           }
-          priorityData(username,tweet,profileimg,tag,tag_index);
+          priorityData(username,tweet,profileimg,tag,tag_index,lat,long);
           return false;
         }
  
@@ -93,28 +93,40 @@ source.addEventListener('message', function(e){
 }, false);
 
 
-function priorityData(username,tweet,profileimg,tag,tag_index) 
+function priorityData(username,tweet,profileimg,tag,tag_index,lat,long) 
 {
   var mainContainer = document.getElementById("PQ");
   var div = document.createElement("div");
   div.classList="card-top";
+  div.setAttribute("onclick", 'viewmap('+lat+','+long+')');
   div.innerHTML = '<div class="'+tag_index+'">' + tag + '</div> <img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius:50px;" /> <div class="username"> <strong>' + username + '</strong></div><br>' + '<div class="tweet">' + tweet + '</div>';
   mainContainer.appendChild(div);
   
 }
 
-function appendData(username,tweet,profileimg) 
+function appendData(username,tweet,profileimg,lat,long) 
 {
   
   var mainContainer = document.getElementById("recents");
   var div = document.createElement("div");
-  var img = document.createElement("div");
+  div.setAttribute("onclick", 'viewmap('+lat+','+long+')');
   div.classList='card-bottom';
   div.innerHTML = '<img src="'+profileimg+'" style="float:left; padding-right:5px; border-radius: 50px;" /> <div class="username"> <strong>' + username + '</strong></div><br>' + '<div class="tweet">' + tweet + '</div>';
   mainContainer.appendChild(div);
   
 }
 
+function viewmap(lat,long)
+{
+  mymap.flyTo(
+    [lat,long],
+    5, {
+      animate: true,
+      duration: 2 // in seconds
+    
+
+  });
+}
 
 L.control.scale().addTo(mymap);
 setInterval(function(){
