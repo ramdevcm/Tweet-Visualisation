@@ -215,4 +215,5 @@ group.initial.rebalance.delay.ms=0
 kafka-console-consumer.sh  --bootstrap-server localhost:9092 --topic twitterdata1 --from-beginning
 kafka-console-producer.sh --bootstrap-server localhost:9092 --topic twitterdata1
 
-
+ps -aux | grep zoo
+kill -9 processid

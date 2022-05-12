@@ -120,12 +120,11 @@ function viewmap(lat,long)
 {
   mymap.flyTo(
     [lat,long],
-    5, {
+    13, {
       animate: true,
       duration: 2 // in seconds
-    
-
   });
+  
 }
 
 L.control.scale().addTo(mymap);

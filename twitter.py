@@ -1,4 +1,3 @@
-from operator import inv
 import tweepy
 import credentials
 from tweepy import Stream
