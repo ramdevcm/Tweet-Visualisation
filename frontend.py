@@ -3,7 +3,7 @@ from pykafka import KafkaClient
 import json
 
 def get_kafka_client():
-    return KafkaClient(hosts='ec2-13-233-253-152.ap-south-1.compute.amazonaws.com:9092')
+    return KafkaClient(hosts='ec2-52-66-7-234.ap-south-1.compute.amazonaws.com:9092')
 
 app = Flask(__name__)
 
