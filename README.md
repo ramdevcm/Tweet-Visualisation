@@ -1,4 +1,4 @@
-ramdev@ramdev:~/Tweet-Visualisation$ ssh -i "twitscape.pem" ubuntu@ec2-3-109-3-173.ap-south-1.compute.amazonaws.com
+ramdev@ramdev:~/Tweet-Visualisation$ ssh -i "twitscape.pem" ubuntu@ec2-52-66-7-234.ap-south-1.compute.amazonaws.com
 Welcome to Ubuntu 20.04.3 LTS (GNU/Linux 5.13.0-1022-aws x86_64)
 
  * Documentation:  https://help.ubuntu.com
